@@ -13,7 +13,7 @@ create table student
  */
 @Entity
 @Table(name = "student")
-public class School {
+public class Student {
     @Id
     private long student_id;
 
