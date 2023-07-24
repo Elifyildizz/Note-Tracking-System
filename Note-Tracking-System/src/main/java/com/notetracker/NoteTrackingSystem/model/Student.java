@@ -8,21 +8,19 @@ import java.util.Objects;
 @Table(name = "student")
 public class Student {
     @Id
-    //Auto-increment id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long student_id;
-
     @Column(name = "name", nullable = false, length = 100)
     private String name;
-
     @Column(name = "surname", nullable = false, length = 100)
     private String surname;
-
+    @Column(name = "grade", nullable = false)
+    private float grade;
     @Column(name = "average_grade", nullable = false)
     private float average_grade;
     @OneToMany
-    @JoinColumn(name = "course_name")
-    private Course course_name;
+    @JoinColumn(name = "course_id")
+    private Course course_id;
 
     public long getStudent_id() {
         return student_id;
@@ -36,12 +34,16 @@ public class Student {
         return surname;
     }
 
+    public float getGrade() {
+        return grade;
+    }
+
     public float getAverage_grade() {
         return average_grade;
     }
 
     public Course getCourse_name() {
-        return course_name;
+        return course_id;
     }
 
     public void setStudent_id(long student_id) {
@@ -56,12 +58,16 @@ public class Student {
         this.surname = surname;
     }
 
+    public void setGrade(float grade) {
+        this.grade = grade;
+    }
+
     public void setAverage_grade(float average_grade) {
         this.average_grade = average_grade;
     }
 
-    public void setCourse_name(Course course_name) {
-        this.course_name = course_name;
+    public void setCourse_id(Course course_id) {
+        this.course_id = course_id;
     }
 
     @Override

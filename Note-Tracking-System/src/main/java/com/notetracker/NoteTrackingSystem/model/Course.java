@@ -2,7 +2,7 @@ package com.notetracker.NoteTrackingSystem.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "course")
@@ -14,15 +14,18 @@ public class Course {
     private int course_id;
     @Column(name = "course_name", nullable = false)
     private String course_name;
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "student_id")
     private Student student_id;
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "instructor_id")
     private Instructor instructor_id;
 
-    @OneToMany(mappedBy = "course")
-    private List<Course> courses;
+    @ElementCollection
+    @CollectionTable(name = "course_student_grades", joinColumns = @JoinColumn(name = "course_id"))
+    @MapKeyJoinColumn(name = "student_id")
+    @Column(name = "grade")
+    private Map<Student, Float> studentGrades;
 
     public int getCourse_id() {
         return course_id;
@@ -30,10 +33,6 @@ public class Course {
 
     public String getCourse_name() {
         return course_name;
-    }
-
-    public List<Course> getCourses() {
-        return courses;
     }
 
     public Student getStudent_id() {
@@ -44,16 +43,16 @@ public class Course {
         return instructor_id;
     }
 
+    public Map<Student, Float> getStudentGrades() {
+        return studentGrades;
+    }
+
     public void setCourse_id(int course_id) {
         this.course_id = course_id;
     }
 
     public void setCourse_name(String course_name) {
         this.course_name = course_name;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
     }
 
     public void setStudent_id(Student student_id) {
@@ -64,11 +63,15 @@ public class Course {
         this.instructor_id = instructor_id;
     }
 
+    public void setStudentGrades(Map<Student, Float> studentGrades) {
+        this.studentGrades = studentGrades;
+    }
+
     @Override
     public String toString() {
         return course_name +
                 " " + course_id +
-                "\nGiven By" + instructor_id +
-                "\nOther Courses:" + courses;
+                "\nGiven By" + instructor_id+
+                "\nGrades:" + studentGrades;
     }
 }

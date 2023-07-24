@@ -15,9 +15,10 @@ public class Instructor {
 
     @Column(name = "surname", nullable = false, length = 100)
     private String surname;
+    //id olarak değiştir patlaması
     @OneToMany
-    @JoinColumn(name = "course_name")
-    private Course course_name;
+    @JoinColumn(name = "course_id")
+    private Course course_id;
 
     public long getInstructor_id() {
         return instructor_id;
@@ -31,8 +32,8 @@ public class Instructor {
         return surname;
     }
 
-    public Course getCourse_name() {
-        return course_name;
+    public Course getCourse_id() {
+        return course_id;
     }
 
     public void setInstructor_id(long instructor_id) {
@@ -47,8 +48,8 @@ public class Instructor {
         this.surname = surname;
     }
 
-    public void setCourse_name(Course course_name) {
-        this.course_name = course_name;
+    public void setCourse_id(Course course_id) {
+        this.course_id = course_id;
     }
 
     @Override
