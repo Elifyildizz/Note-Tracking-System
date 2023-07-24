@@ -5,14 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-/*
-create table instructor
-(
-    instructor_id int primary key,
-    name          varchar(100),
-    surname       varchar(100)
-);
- */
 @Entity
 @Table(name = "instructor")
 public class Instructor {

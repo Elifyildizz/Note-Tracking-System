@@ -2,15 +2,6 @@ package com.notetracker.NoteTrackingSystem.model;
 
 import jakarta.persistence.*;
 
-/*
-create table student
-(
-    student_id    int primary key,
-    name          varchar(100),
-    surname       varchar(100),
-    average_grade float
-);
- */
 @Entity
 @Table(name = "student")
 public class Student {
