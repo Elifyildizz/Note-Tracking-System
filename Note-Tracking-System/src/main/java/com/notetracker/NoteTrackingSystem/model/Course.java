@@ -11,58 +11,58 @@ import java.util.Map;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "course_id")
-    private int course_id;
-    @Column(name = "course_name", nullable = false)
-    private String course_name;
+    @Column(name = "courseID")
+    private int courseID;
+    @Column(name = "courseName", nullable = false)
+    private String courseName;
     @ManyToMany
-    @JoinColumn(name = "student_id")
-    private Student student_id;
+    @JoinColumn(name = "studentID")
+    private Student studentID;
     @ManyToMany
-    @JoinColumn(name = "instructor_id")
-    private Instructor instructor_id;
+    @JoinColumn(name = "instructorID")
+    private Instructor instructorID;
 
     @ElementCollection
-    @CollectionTable(name = "course_student_grades", joinColumns = @JoinColumn(name = "course_id"))
-    @MapKeyJoinColumn(name = "student_id")
+    @CollectionTable(name = "courseStudentGrades", joinColumns = @JoinColumn(name = "courseID"))
+    @MapKeyJoinColumn(name = "studentID")
     @Column(name = "grade")
     private Map<Student, Float> studentGrades;
     private List<Student> students;
 
-    public int getCourse_id() {
-        return course_id;
+    public int getCourseID() {
+        return courseID;
     }
 
-    public String getCourse_name() {
-        return course_name;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public Student getStudent_id() {
-        return student_id;
+    public Student getStudentID() {
+        return studentID;
     }
 
-    public Instructor getInstructor_id() {
-        return instructor_id;
+    public Instructor getInstructorID() {
+        return instructorID;
     }
 
     public Map<Student, Float> getStudentGrades() {
         return studentGrades;
     }
 
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
     }
 
-    public void setCourse_name(String course_name) {
-        this.course_name = course_name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
-    public void setStudent_id(Student student_id) {
-        this.student_id = student_id;
+    public void setStudentID(Student studentID) {
+        this.studentID = studentID;
     }
 
-    public void setInstructor_id(Instructor instructor_id) {
-        this.instructor_id = instructor_id;
+    public void setInstructorID(Instructor instructorID) {
+        this.instructorID = instructorID;
     }
 
     public void setStudentGrades(Map<Student, Float> studentGrades) {
@@ -71,9 +71,9 @@ public class Course {
 
     @Override
     public String toString() {
-        return course_name +
-                " " + course_id +
-                "\nGiven By" + instructor_id+
+        return courseName +
+                " " + courseID +
+                "\nGiven By" + instructorID+
                 "\nGrades:" + studentGrades;
     }
 

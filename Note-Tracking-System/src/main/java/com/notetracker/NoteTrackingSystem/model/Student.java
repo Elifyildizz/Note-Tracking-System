@@ -9,21 +9,21 @@ import java.util.Objects;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long student_id;
+    private long studentID;
     @Column(name = "name", nullable = false, length = 100)
     private String name;
     @Column(name = "surname", nullable = false, length = 100)
     private String surname;
     @Column(name = "grade", nullable = false)
     private float grade;
-    @Column(name = "average_grade", nullable = false)
-    private float average_grade;
+    @Column(name = "averageGrade", nullable = false)
+    private float averageGrade;
     @OneToMany
-    @JoinColumn(name = "course_id")
-    private Course course_id;
+    @JoinColumn(name = "courseID")
+    private Course courseID;
 
-    public long getStudent_id() {
-        return student_id;
+    public long getStudentID() {
+        return studentID;
     }
 
     public String getName() {
@@ -38,16 +38,16 @@ public class Student {
         return grade;
     }
 
-    public float getAverage_grade() {
-        return average_grade;
+    public float getAverageGrade() {
+        return averageGrade;
     }
 
-    public Course getCourse_name() {
-        return course_id;
+    public Course getCourseName() {
+        return courseID;
     }
 
-    public void setStudent_id(long student_id) {
-        this.student_id = student_id;
+    public void setStudentID(long studentID) {
+        this.studentID = studentID;
     }
 
     public void setName(String name) {
@@ -62,12 +62,12 @@ public class Student {
         this.grade = grade;
     }
 
-    public void setAverage_grade(float average_grade) {
-        this.average_grade = average_grade;
+    public void setAverageGrade(float averageGrade) {
+        this.averageGrade = averageGrade;
     }
 
-    public void setCourse_id(Course course_id) {
-        this.course_id = course_id;
+    public void setCourseID(Course courseID) {
+        this.courseID= courseID;
     }
 
     @Override
@@ -86,7 +86,7 @@ public class Student {
                 Objects.equals(surname, other.surname);
     }
 
-    public Course getCourse_id() {
-        return course_id;
+    public Course getCourseID() {
+        return courseID;
     }
 }

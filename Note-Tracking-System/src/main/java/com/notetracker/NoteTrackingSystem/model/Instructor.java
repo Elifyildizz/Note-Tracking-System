@@ -8,7 +8,7 @@ import java.util.Objects;
 @Table(name = "instructor")
 public class Instructor {
     @Id
-    private long instructor_id;
+    private long instructorID;
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;
@@ -17,11 +17,11 @@ public class Instructor {
     private String surname;
     //id olarak değiştir patlaması
     @OneToMany
-    @JoinColumn(name = "course_id")
-    private Course course_id;
+    @JoinColumn(name = "courseID")
+    private Course courseID;
 
-    public long getInstructor_id() {
-        return instructor_id;
+    public long getInstructorID() {
+        return instructorID;
     }
 
     public String getName() {
@@ -32,12 +32,12 @@ public class Instructor {
         return surname;
     }
 
-    public Course getCourse_id() {
-        return course_id;
+    public Course getCourseID() {
+        return courseID;
     }
 
-    public void setInstructor_id(long instructor_id) {
-        this.instructor_id = instructor_id;
+    public void setInstructorID(long instructorID) {
+        this.instructorID = instructorID;
     }
 
     public void setName(String name) {
@@ -48,8 +48,8 @@ public class Instructor {
         this.surname = surname;
     }
 
-    public void setCourse_id(Course course_id) {
-        this.course_id = course_id;
+    public void setCourseID(Course courseID) {
+        this.courseID = courseID;
     }
 
     @Override
