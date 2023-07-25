@@ -14,9 +14,9 @@ public interface StudentService {
     bir öğrencinin ortalama notu şeklinde hesaplamalar yapan api ler yazılacak
      */
     Student saveStudent(Student student);
-    String deleteStudent(long student_id);
-    Student getStudentById(long student_id);
+    String deleteStudent(long studentID);
+    Student getStudentById(long studentID);
     String updateStudent(Student student);
     List<Student> getAllStudents();
-    float calculateAverageNote(long student_id);
+    float calculateAverageNote(long studentID);
 }

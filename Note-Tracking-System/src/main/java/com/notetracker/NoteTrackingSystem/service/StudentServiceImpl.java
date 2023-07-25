@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -32,38 +31,38 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public String deleteStudent(long student_id) {
-        Optional<Student> optionalStudent = studentRepository.findById(student_id);
+    public String deleteStudent(long studentID) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentID);
         if (optionalStudent.isPresent()) {
-            this.studentRepository.deleteById(optionalStudent.get().getStudent_id());
+            this.studentRepository.deleteById(optionalStudent.get().getStudentID());
         } else {
-            throw new RuntimeException(student_id + " Is not found.");
+            throw new RuntimeException(studentID + " Is not found.");
         }
         return null;
     }
 
     @Override
-    public Student getStudentById(long student_id) {
-        Optional<Student> optionalStudent = studentRepository.findById(student_id);
+    public Student getStudentById(long studentID) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentID);
         Student student;
         if (optionalStudent.isPresent()) {
             student = optionalStudent.get();
         } else {
-            throw new RuntimeException(student_id + " Is not found.");
+            throw new RuntimeException(studentID + " Is not found.");
         }
         return student;
     }
 
     @Override
     public String updateStudent(Student student) {
-        long studentId = student.getStudent_id();
+        long studentId = student.getStudentID();
         Optional<Student> optionalStudent = studentRepository.findById(studentId);
 
         optionalStudent.ifPresent(existingStudent -> {
             existingStudent.setName(student.getName());
             existingStudent.setSurname(student.getSurname());
             existingStudent.setGrade(student.getGrade());
-            existingStudent.setAverage_grade(student.getAverage_grade());
+            existingStudent.setAverageGrade(student.getAverageGrade());
             studentRepository.save(existingStudent);
         });
         return "Student updated successfully.";
@@ -75,14 +74,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public float calculateAverageNote(long student_id) {
-        Optional<Student> optionalStudent = studentRepository.findById(student_id);
+    public float calculateAverageNote(long studentID) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentID);
         if (optionalStudent.isPresent()) {
             Student student = optionalStudent.get();
             List<Float> grades = new ArrayList<>();
             grades.add(student.getGrade());
 
-            Course course = student.getCourse_id();
+            Course course = student.getCourseID();
             List<Student> studentsEnrolledCourse = course.getStudents();
             for (Student s : studentsEnrolledCourse) {
                 grades.add(s.getGrade());
@@ -93,7 +92,7 @@ public class StudentServiceImpl implements StudentService {
             }
             return sum / grades.size();
         } else {
-            throw new RuntimeException(student_id + " Is not found.");
+            throw new RuntimeException(studentID + " Is not found.");
         }
     }
 }

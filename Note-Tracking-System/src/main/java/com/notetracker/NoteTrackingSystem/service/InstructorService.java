@@ -12,7 +12,7 @@ public interface InstructorService {
     bir öğrencinin ortalama notu şeklinde hesaplamalar yapan api ler yazılacak
      */
     Instructor saveInstructor(Instructor instructor);
-    String deleteInstructor(long instructor_id);
-    Instructor getInstructorById(long instructor_id);
-    String updateInstructor(long instructor_id);
+    String deleteInstructor(long instructorID);
+    Instructor getInstructorById(long instructorID);
+    String updateInstructor(Instructor instructor);
 }
