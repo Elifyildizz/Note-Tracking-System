@@ -85,4 +85,8 @@ public class Student {
         return Objects.equals(name, other.name) &&
                 Objects.equals(surname, other.surname);
     }
+
+    public Course getCourse_id() {
+        return course_id;
+    }
 }

@@ -2,6 +2,7 @@ package com.notetracker.NoteTrackingSystem.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Map;
 
 @Entity
@@ -26,6 +27,7 @@ public class Course {
     @MapKeyJoinColumn(name = "student_id")
     @Column(name = "grade")
     private Map<Student, Float> studentGrades;
+    private List<Student> students;
 
     public int getCourse_id() {
         return course_id;
@@ -73,5 +75,13 @@ public class Course {
                 " " + course_id +
                 "\nGiven By" + instructor_id+
                 "\nGrades:" + studentGrades;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }
