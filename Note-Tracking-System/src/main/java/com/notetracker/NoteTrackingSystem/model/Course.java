@@ -2,6 +2,8 @@ package com.notetracker.NoteTrackingSystem.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +30,14 @@ public class Course {
     @Column(name = "grade")
     private Map<Student, Float> studentGrades;
     private List<Student> students;
-
+    public Course(){
+        this.courseID=courseID;
+        this.courseName=courseName;
+        this.studentID=studentID;
+        this.instructorID=instructorID;
+        this.studentGrades = new HashMap<>();
+        this.students = new ArrayList<>();
+    }
     public long getCourseID() {
         return courseID;
     }

@@ -21,6 +21,14 @@ public class Student {
     @OneToMany
     @JoinColumn(name = "courseID")
     private Course courseID;
+    public Student(){
+        this.studentID=studentID;
+        this.name=name;
+        this.surname=surname;
+        this.grade=grade;
+        this.averageGrade=averageGrade;
+        this.courseID=courseID;
+    }
 
     public long getStudentID() {
         return studentID;
