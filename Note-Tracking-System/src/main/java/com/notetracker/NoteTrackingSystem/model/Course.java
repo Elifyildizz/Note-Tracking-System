@@ -29,7 +29,7 @@ public class Course {
     private Map<Student, Float> studentGrades;
     private List<Student> students;
 
-    public int getCourseID() {
+    public long getCourseID() {
         return courseID;
     }
 
@@ -73,7 +73,7 @@ public class Course {
     public String toString() {
         return courseName +
                 " " + courseID +
-                "\nGiven By" + instructorID+
+                "\nGiven By" + instructorID +
                 "\nGrades:" + studentGrades;
     }
 
