@@ -8,6 +8,7 @@ import java.util.Objects;
 @Table(name = "instructor")
 public class Instructor {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long instructorID;
 
     @Column(name = "name", nullable = false, length = 100)
@@ -15,10 +16,15 @@ public class Instructor {
 
     @Column(name = "surname", nullable = false, length = 100)
     private String surname;
-    //id olarak değiştir patlaması
     @OneToMany
     @JoinColumn(name = "courseID")
     private Course courseID;
+    public Instructor(){
+        this.instructorID=instructorID;
+        this.name=name;
+        this.surname=surname;
+        this.courseID=courseID;
+    }
 
     public long getInstructorID() {
         return instructorID;

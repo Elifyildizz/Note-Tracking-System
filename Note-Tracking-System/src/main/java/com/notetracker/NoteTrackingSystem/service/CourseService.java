@@ -5,6 +5,7 @@ import com.notetracker.NoteTrackingSystem.model.Student;
 
 import java.util.List;
 
+
 public interface CourseService {
     Course saveCourse(Course course);
 
